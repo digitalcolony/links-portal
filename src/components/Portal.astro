@@ -1,0 +1,24 @@
+---
+import Link from "./Link.astro";
+import { getCollection } from "astro:content";
+
+// Fetch the links collection
+const links = await getCollection("links");
+---
+
+<main class="w-full max-w-4xl p-8">
+	<ul class="grid grid-cols-2 gap-4">
+		{
+			links.map((link) => (
+				<li>
+					<Link
+						href={link.data.url}
+						title={link.data.name}
+						emoji="😀"
+						description={link.data.description}
+					/>
+				</li>
+			))
+		}
+	</ul>
+</main>
