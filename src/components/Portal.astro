@@ -4,6 +4,9 @@ import { getCollection } from "astro:content";
 
 // Fetch the links collection
 const links = await getCollection("links");
+
+// sort the links by name
+links.sort((a, b) => a.data.name.localeCompare(b.data.name));
 ---
 
 <main class="w-full max-w-4xl p-8">
